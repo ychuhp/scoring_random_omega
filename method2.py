@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
     A = torch.load(distm_fp)
     mask = torch.load(mask_fp)
-    B = util.distm_pdb(pdb_fp)
+    B = util.distm_pdb(pdb_fp).clamp(0,36)
     A,B = dms.match_size(A,B)
     _,mask = dms.match_size(A,mask)
     print( dms.score(A,B,mask) )

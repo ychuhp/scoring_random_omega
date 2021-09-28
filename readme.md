@@ -10,5 +10,5 @@
 
 ## Run
 
-    $ python3 method1.py --pdb complex_hvkor1.pdb
-    $ python3 method2.py --pdb complex_hvkor1.pdb
+    $ python3 method1.py --pdb pathtoPDB.pdb
+    $ python3 method2.py --pdb pathtoPDB.pdb
