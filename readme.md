@@ -1,7 +1,7 @@
 # Methods of scoring Random Alpha Omega structures
 
 * Method 1 uses alphafold distance map and confidence
-* Method 2 uses alphafold distance map and confidence
+* Method 2 uses custom prediction distance map and confidence
 
 ## Installation
 
