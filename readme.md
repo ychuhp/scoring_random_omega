@@ -10,5 +10,8 @@
 
 ## Run
 
-    $ python3 method1.py --pdb pathtoPDB.pdb
-    $ python3 method2.py --pdb pathtoPDB.pdb
+    $ python3 method1.py --pdb_dir candidates
+    $ python3 method2.py --pdb_dir candidates
+
+
+* --pdb_dir is the folder that contains the pdb files
