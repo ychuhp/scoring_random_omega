@@ -15,3 +15,9 @@
 
 
 * --pdb_dir is the folder that contains the pdb files
+
+
+# Methods of generating distance map and confidence mask
+
+* Method 1
+* Method 2
