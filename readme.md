@@ -10,7 +10,7 @@
 
 ## Run
 
-    $ python3 method1.py --pdb_dir candidates --distm_folder af2_distm_arg
+    $ python3 method1.py --pdb_dir candidates --distm_folder af2_distm_agm
 
     $ python3 method2.py --pdb_dir candidates --distm_folder cust_distm_cdpk
 
