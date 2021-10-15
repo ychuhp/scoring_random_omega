@@ -46,6 +46,8 @@ def fasta_parse(fp):
             seq = ''
         else:
             seq += l
+    
+    FASTA.append( (name,seq) )
     return FASTA
         
 

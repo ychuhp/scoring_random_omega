@@ -10,13 +10,14 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--pdb_dir', type=str, help="the folder that contains the pdb files", required=True)
+    parser.add_argument('--distm_folder', type=str, help="the folder that contains the pdb files", required=True)
     args = parser.parse_args()
 
 
 
 
-    distm_fp = 'distm/dist'
-    mask_fp = 'distm/confidence_mask'
+    distm_fp = args.distm_folder+'/dist'
+    mask_fp = args.distm_folder+'/confidence_mask'
     pdb_dir = args.pdb_dir
 
     A = torch.load(distm_fp)
