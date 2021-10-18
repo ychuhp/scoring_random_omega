@@ -13,9 +13,11 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--pdb', type=str, help="predicted pdb file", required=True)
     parser.add_argument('--pred_error', type=str, help="predicted aligned error json file", required=True)
+    parser.add_argument('--out', type=str, help="output folder", required=True)
     args = parser.parse_args()
 
 
+    os.mkdir( args.out )
     '''
     with open(args.pred_error) as json_file:
         data = json.load(json_file)
@@ -32,5 +34,5 @@ if __name__ == '__main__':
 
     distm = util.distm_pdb(args.pdb)
 
-    torch.save( e<10, 'confidence_mask' )
-    torch.save( distm, 'dist' )
+    torch.save( e<10, args.out + '/confidence_mask' )
+    torch.save( distm, args.out + '/dist' )

@@ -16,9 +16,10 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--seq', type=str, help="sequence", required=True)
+    parser.add_argument('--out', type=str, help="output folder", required=True)
     args = parser.parse_args()
 
-
+    os.mkdir( args.out )
 
 
     esm_model, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()
@@ -51,5 +52,5 @@ if __name__ == '__main__':
     py.shape
     pdistm = py.argmax(dim=1)[0]
 
-    torch.save( (py>.5).sum(dim=1)[0].bool(), 'confidence_mask' )
-    torch.save( pdistm, 'dist' )
+    torch.save( (py>.5).sum(dim=1)[0].bool(), args.out + '/confidence_mask' )
+    torch.save( pdistm, args.out + '/dist' )
