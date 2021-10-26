@@ -13,9 +13,9 @@ import protein_parser
 import data
 
 def distm_pdb(pdb, key=None):
-    D = protein_parser.parse(pdb)
+    D = protein_parser.parse(pdb, atoms=['CA'])
     if key==None: key = list(D.keys())[0]
-    chain = protein_parser.parse(pdb)[key]['CA']
+    chain = D[key]['CA']
     chain = torch.tensor([chain])
     chain.shape
     distm = data.distm_chain(chain)
@@ -50,7 +50,11 @@ def fasta_parse(fp):
     FASTA.append( (name,seq) )
     return FASTA
         
-
+def writeListToFile(writeList,filename):
+    with open(filename, 'w') as f:
+        for item in writeList[:-1]:
+            f.write("%s\n" % item)
+        f.write("%s" % writeList[-1])
 
 def writeFileToList(filename):
     returnList = []
