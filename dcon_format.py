@@ -14,7 +14,7 @@ def create_rr(seq,distm, outfp):
             # Alternate probabilities
             # if d < 12: p=1
             # elif d < 16: p= 1 - .5*(16-d)/4
-            line = ' '.join([ str(x) for x in [i,j, 0,8, p]])
+            line = ' '.join([ str(x) for x in [i,j, 0,12, p]])
             RR.append( line )
     util.writeListToFile([seq]+RR, outfp)
     
@@ -26,6 +26,7 @@ def ss8_alphafold_SS(fp):
     data = [ x.split() for x in data][1:]
     data = [ x[5] for x in data]
     return data
+
 def ss3_ss8(ss): 
     DCT_ss3_ss8 = {'H':'H', 'E':'E', 'T':'C', 'S':'C', 'G':'H', 'B':'E', 'I':'C', 'C':'C'}
     #Typically, the 8 DSSP states are converted into three classes using the following convention: [GHI] -> h, [EB] -> e, [TS' '] -> c.
