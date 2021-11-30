@@ -13,6 +13,7 @@ DICT_R2RES = {
     'ALA':'A', 'ARG':'R', 'ASN':'N', 'ASP':'D','CYS':'C', 'GLN':'Q', 'GLU':'E', 'GLY':'G',
     'HIS':'H', 'ILE':'I', 'LEU':'L', 'LYS':'K','MET':'M', 'PHE':'F', 'PRO':'P', 'SER':'S',
     'THR':'T', 'TRP':'W', 'TYR':'Y', 'VAL':'V','ASX':'N', 'GLX':'Q', 'UNK':'G', 'HSD':'H',
+    'HSE':'H'
     }
 
 def process_raw_line(l,mode='PDB'):
@@ -169,6 +170,7 @@ def parse(filepath, mode='PDB', atoms = ['CA', 'N', 'C', 'CB'] ):
             if RES in DICT_R2RES:
                 Sdata[chain_id][idx]['type'] = DICT_R2RES[RES]
                 Sdata[chain_id][idx][atom] =  [x,y,z]
+            else: print(RES)
 
         if not (chain_id and idx): continue
         # If we move to a increasing new index and the previous residue does not have CB, check if we can construct and assign the CB to the previous residue
@@ -176,8 +178,11 @@ def parse(filepath, mode='PDB', atoms = ['CA', 'N', 'C', 'CB'] ):
         if idx > old_idx and all(a in ores for a in ['CA','C','N']) and ('CB' not in ores):
             ores['CB'] = cb(ores['CA'], ores['C'], ores['N']) 
 
+        if old_idx == -1: del( Sdata[chain_id][old_idx] )
         old_idx = idx
-
+        
+    
+    
     # 
     # Second Parse: format and construct from structured data
     #
@@ -187,9 +192,11 @@ def parse(filepath, mode='PDB', atoms = ['CA', 'N', 'C', 'CB'] ):
         seq = ''
         for idx in Sdata[chain]:
             r = Sdata[chain][idx]
+            
             if all(a in r for a in atoms):
                 Fdata[chain]['SEQ'].append( r['type'] )
                 [ Fdata[chain][a].append(r[a]) for a in atoms ]
+
 
         Fdata[chain]['SEQ'] = ''.join( Fdata[chain]['SEQ'] )
 

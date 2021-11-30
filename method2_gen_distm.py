@@ -19,7 +19,9 @@ if __name__ == '__main__':
     parser.add_argument('--out', type=str, help="output folder", required=True)
     args = parser.parse_args()
 
-    os.mkdir( args.out )
+    
+    if not os.path.isfile( args.out ):
+      os.mkdir( args.out )
 
 
     esm_model, alphabet = esm.pretrained.esm1b_t33_650M_UR50S()

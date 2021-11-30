@@ -10,9 +10,9 @@
 
 ## Run
 
-    $ python3 method1.py --pdb_dir candidates --distm_folder af2_distm_agm
+    $ python3 method1.py --pdb_dir candidates --distm_folder af2_6SSW
 
-    $ python3 method2.py --pdb_dir candidates --distm_folder cust_distm_cdpk
+    $ python3 method2.py --pdb_dir candidates --distm_folder cust_6SSW
 
 
 * --pdb_dir is the folder that contains the pdb files

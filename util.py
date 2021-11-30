@@ -5,6 +5,7 @@ from matplotlib.pyplot import figure
 
 from functools import reduce  # Required in Python 3
 import operator
+
 def prod(iterable):
     return reduce(operator.mul, iterable, 1)
 
@@ -109,7 +110,6 @@ def plot_chain(chain, save=None, mask=None, scale=5):
     plt.draw()
     plt.show()
     plt.close(fig)
-
 
 def save_pred_image(py,y, img_name='test.png'):
     y,py = y.detach().cpu(), py.detach().cpu()
