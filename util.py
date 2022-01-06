@@ -13,6 +13,13 @@ def prod(iterable):
 import protein_parser
 import data
 
+def chain_pdb(pdb, key=None):
+    D = protein_parser.parse(pdb, atoms=['CA'])
+    if key==None: key = list(D.keys())[0]
+    chain = D[key]['CA']
+    chain = torch.tensor([chain])
+    return chain
+
 def distm_pdb(pdb, key=None):
     D = protein_parser.parse(pdb, atoms=['CA'])
     if key==None: key = list(D.keys())[0]

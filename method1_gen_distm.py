@@ -18,7 +18,8 @@ if __name__ == '__main__':
 
 
     os.mkdir( args.out )
-    '''
+
+    # Load json pae file
     with open(args.pred_error) as json_file:
         data = json.load(json_file)
 
@@ -27,10 +28,13 @@ if __name__ == '__main__':
     L = int(math.sqrt( len(e) ))
     e = e.reshape(L,L)
     e = e + e.T
+
+    #Load direct pae file
     '''
     e = torch.load(args.pred_error)
     e = torch.tensor(e)
     e = e + e.T
+    '''
 
     distm = util.distm_pdb(args.pdb)
 

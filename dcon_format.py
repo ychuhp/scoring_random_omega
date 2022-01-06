@@ -4,7 +4,12 @@ import torch
 
 def triu_indicies(N): return [ (a,b) for a,b in zip( *numpy.triu_indices(N,k=1) ) ]
 
-def create_rr(seq,distm, outfp):
+def create_rr(seq, distm, outfp):
+    '''
+    seq: sequence string
+    distm: distance matrix
+    outfp: output filepath
+    '''
     RR = []
     L = distm.shape[0]
     for i,j in triu_indicies(L):
